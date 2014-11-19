@@ -60,7 +60,7 @@ angular.module('starter', ['ionic',
                 } else if (user) {
                     // user authenticated with Firebase
                     $rootScope.userEmail = user.email;
-                    $window.location.href = ('#/bucket/list');
+                    $window.location.href = ('#/user/logged');
                 } else {
                     // user is logged out
                     $rootScope.userEmail = null;
@@ -96,25 +96,16 @@ angular.module('starter', ['ionic',
                 }
             }
         })
-        .state('bucket', {
-            url: "/bucket",
+        .state('usernav', {
+            url: "/usernav",
             abstract: true,
-            templateUrl: "templates/bucket.html"
+            templateUrl: "templates/usernav.html"
         })
-        .state('bucket.list', {
-            url: '/list',
+        .state('user.completed', {
+            url: '/user-completed',
             views: {
-                'bucket-list': {
-                    templateUrl: 'templates/bucket-list.html',
-                    controller: 'myListCtrl'
-                }
-            }
-        })
-        .state('bucket.completed', {
-            url: '/completed',
-            views: {
-                'bucket-completed': {
-                    templateUrl: 'templates/bucket-completed.html',
+                'user-completed': {
+                    templateUrl: 'templates/user-completed.html',
                     controller: 'completedCtrl'
                 }
             }
