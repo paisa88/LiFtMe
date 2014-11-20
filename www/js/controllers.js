@@ -53,13 +53,15 @@ angular.module('starter.controllers', [])
         $scope.createUser = function() {
             var email = this.user.email;
             var password = this.user.password;
+			var fname = this.user.fname;
+			var lname = this.user.lname;
             if (!email || !password) {
                 $rootScope.notify("Please enter valid credentials");
                 return false;
             }
             $rootScope.show('Please wait.. Registering');
 
-            $rootScope.auth.$createUser(email, password, function(error, user) {
+            $rootScope.auth.$createUser(email, password, fname, lname, function(error, user) {
                 if (!error) {
                     $rootScope.hide();
                     $rootScope.userEmail = user.email;
