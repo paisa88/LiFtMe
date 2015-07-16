@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('Liftme.controllers', [])
 
 .controller('SignInCtrl', [
         '$scope', '$rootScope', '$firebaseAuth', '$window',
@@ -25,7 +25,7 @@ angular.module('starter.controllers', [])
                 }).then(function(user) {
                     $rootScope.hide();
                     $rootScope.userEmail = user.email;
-                    $window.location.href = ('#/user/logged');
+                    $window.location.href = ('#/user-logged');
                 }, function(error) {
                     $rootScope.hide();
                     if (error.code == 'INVALID_EMAIL') {
@@ -113,13 +113,26 @@ angular.module('starter.controllers', [])
 })
 
 .controller('completedCtrl', function($rootScope, $scope, $window, $firebase) {
-    $rootScope.show("Please wait... Processing");
-    
-});
+        $rootScope.show("Please wait... Processing");
+    })
+
+.controller('loggedIn',['$rootScope', '$scope', '$window', '$firebase',
+        function($rootScope, $scope, $window, $firebase){
+
+            $rootScope.show(" Welcome ");
+
+            $scope.onRefresh = function(){
+
+            }
+}]);
+
+
 
 
 function escapeEmailAddress(email) {
-    if (!email) return false
+    if (!email) {
+        return false
+    }
     // Replace '.' (not allowed in a Firebase key) with ','
     email = email.toLowerCase();
     email = email.replace(/\./g, ',');

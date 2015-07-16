@@ -4,9 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic',
-'starter.controllers',
-'firebase'])
+angular.module('Liftme', ['ionic', 'Liftme.controllers', 'firebase'])
 
 .run(function($ionicPlatform, $rootScope, $firebaseAuth, $firebase, $window, $ionicLoading) {
     $ionicPlatform.ready(function() {
@@ -20,7 +18,7 @@ angular.module('starter', ['ionic',
         }
 
         $rootScope.userEmail = null;
-        $rootScope.baseUrl = 'https://blinding-torch-1105.firebaseapp.com/';
+        $rootScope.baseUrl = 'https://blinding-torch-1105.firebaseio.com/';
         var authRef = new Firebase($rootScope.baseUrl);
         $rootScope.auth = $firebaseAuth(authRef);
 
@@ -33,6 +31,10 @@ angular.module('starter', ['ionic',
                 showDelay: 0
             });
         };
+
+        //$rootScope.login = function(){
+        //}
+
 
         $rootScope.hide = function() {
             $ionicLoading.hide();
@@ -106,6 +108,15 @@ angular.module('starter', ['ionic',
                 'user-completed': {
                     templateUrl: 'templates/user-completed.html',
                     controller: 'completedCtrl'
+                }
+            }
+        })
+        .state('user-logged', {
+            url: '/user-logged',
+            views: {
+                'user-logged': {
+                    templateUrl: 'templates/user-logged.html',
+                    controller: 'loggedIn'
                 }
             }
         })
